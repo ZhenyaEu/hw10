@@ -1,24 +1,84 @@
 <body>
     <script>
 
-const toDoList =  {
+        const toDoList = {
+            arrayToDo: [],
+            addTask: obj => {
+                let findByName = toDoList.arrayToDo.find(task => task.name === obj.name);
+                if (findByName) {
+                    return arrayToDo;
+                }
+                toDoList.arrayToDo.push(obj);
+                return toDoList.arrayToDo;
+            },
 
-addTask
+            deleteTask: (arrayToDo, index) => {
+                arrayToDo.splice(index, 1);
+                return arrayToDo
+            },
+
+            totalNumber: (arrayToDo) => {
+                var total = `total number of tasks is ${arrayToDo.length}`;
+                return total;
+            },
+
+            completedNumber: (arrayToDo) => {
+                let complCount = 0;
+                for (let key of arrayToDo) {
+
+                    if (key.completed === true) {
+                        complCount ++;
+                    }
+                    return `total number of completed tasks is ${complCount}`;
+                }
+            },
+
+            uncompletedNumber(arrayToDo) {
+                let uncomplCount = 0;
+                for (const key in arrayToDo) {
+                    if (arrayToDo[key].completed === false) {
+                        uncomplCount++;
+                    }
+
+                }
+                return `total number of uncompleted tasks is ${uncomplCount}`;
+            }
 
 
-deleteTask
+        }
 
 
 
-    numberOfTasks: {
-    totalNumber:  
-    comletedNumber:
-    leftToComplete:
-}
+        const testObject = {
+            name: 'buy',
+            dicription: 'buy a milk in supermarket',
+            completed: true
+        };
 
-}
+        const testObject2 = {
+            name: 'sport',
+            dicription: 'run 2 km',
+            completed: false
+        };
 
+        const testObject3 = {
+            name: 'sleep',
+            dicription: 'sleep for 2 hours',
+            completed: false
+        };
 
+        console.log(toDoList.addTask(testObject));
+        console.log(toDoList.addTask(testObject2));
+        console.log(toDoList.addTask(testObject3));
+        console.log(toDoList.arrayToDo);
+        
+        //console.log(toDoList.deleteTask(toDoList.arrayToDo, 2));
+
+        console.log(toDoList.totalNumber(toDoList.arrayToDo));
+
+        console.log(toDoList.completedNumber(toDoList.arrayToDo));
+
+        console.log(toDoList.uncompletedNumber(toDoList.arrayToDo));
 
 
 
